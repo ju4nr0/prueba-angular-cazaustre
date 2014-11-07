@@ -1,0 +1,17 @@
+{
+"name": "prueba-angular",
+"version": "0.0.1",
+"description": "Ejemplo de desarrollo de aplicación web c
+on JavaScript",
+"bugs": {
+"url": "https://github.com/ju4nr0/prueba-angular-cazaustre/issues",
+},
+"license": "MIT"
+},
+"repository": {
+"type": "git",
+"url": "https://github.com/ju4nr0/prueba-angular-cazaustre"
+},
+"dependencies": {},
+"devDependencies": {}
+}

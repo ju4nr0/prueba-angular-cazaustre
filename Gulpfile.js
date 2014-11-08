@@ -1,8 +1,15 @@
+// Para jshint
+'use strict';
+
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     historyApiFallback = require('connect-history-api-fallback'),
     stylus = require('gulp-stylus'),
-    nib = require('nib');
+    nib = require('nib'),
+    jshint = require('gulp-jshint'),
+    stylish = require('jshint-stylish'),
+    inject = require('gulp-inject'),
+    wiredep = require('wiredep').stream;
 
 // Servidor web de desarrollo
 gulp.task('server', function() {
@@ -17,6 +24,14 @@ gulp.task('server', function() {
           return [ historyApiFallback ];
         }
     });
+});
+
+// Busca errores en el JS y nos los muestra por pantalla
+gulp.task('jshint', function() {
+  return gulp.src('./app/scripts/**/*.js')
+      .pipe(jshint('.jshintrc'))
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(jshint.reporter('fail'));
 });
 
 /*
@@ -38,12 +53,29 @@ gulp.task('html', function() {
   .pipe(connect.reload());
 });
 
+// Inyecta ficheros CSS y JS que hayamos creado en el index.html
+gulp.task('inject', function() {
+  var files = gulp.src(['.app/stylesheets/**/*.css'], ['.app/scripts/**/*.js']);
+  return gulp.src('index.html', {cwd: './app'})
+  .pipe(inject(files, {read: false, ignorePath: './app'}))
+  .pipe(gulp.dest('./app'));
+});
+
+// Inyecta librerias instaladas con Bower
+gulp.task('bower', function() {
+  gulp.src('./app/index.html')
+  .pipe(wiredep({directory: './app/lib'}))
+  .pipe(gulp.dest('./app'));
+});
 
 // Vigila cambios que se produzcan en el código
 // y lanza las tareas relacionadas
 gulp.task('watch', function() {
   gulp.watch(['./app/**/*.html'], ['html']);
-  gulp.watch(['./app/stylesheets/**/*.styl'], ['css']);
+  gulp.watch(['./app/stylesheets/**/*.styl'], ['css', 'inject']);
+  gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
+  gulp.watch(['./app/bower.json'], ['bower']);
 });
 
-gulp.task('default', ['server', 'watch']);
+// Tareas que se ejecutan al arrancar Gulp
+gulp.task('default', ['server', 'inject', 'bower', 'watch']);

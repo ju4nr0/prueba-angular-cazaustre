@@ -31,4 +31,22 @@ utilicen, tengan en el código el mismo espaciado, tabulación, etc...
 errores tanto de código como de sintaxis, uso de variables, o estilo en
 nuestro código JavaScript según guardamos los archivos. Combinado
 con un gestor de tareas, como Gulp, que usaremos más adelante, nos
-permite un desarrollo ágil de nuestros proyectos. Puedes ver que propiedades añadir en la página web de su documentación: http://www.jshint.com/docs/options/:
+permite un desarrollo ágil de nuestros proyectos. Puedes ver que propiedades añadir en la página web de su documentación: http://www.jshint.com/docs/options/
+
+
+GULP:
+
+$ npm install --save-dev gulp
+$ npm install --save-dev gulp-connect
+$ npm install --save-dev connect-history-api-fallback
+$ npm install --save-dev gulp-jshint
+$ npm install --save-dev gulp-useref
+$ npm install --save-dev gulp-if
+$ npm install --save-dev gulp-uglify
+$ npm install --save-dev gulp-minify-css
+$ npm install --save-dev gulp-stylus
+$ npm install --save-dev nib
+
+Con '--save' se guardan dependencias en el package.json, y con '-dev' indica el objeto donde guardarlas.
+
+Estas dependencias nos servirán para automatizar la correción de código de JavaScript, el minificado del css, la creación de un servidor web de desarrollo para poder ver los cambios que hagamos en el código en tiempo real en el navegador, etc.

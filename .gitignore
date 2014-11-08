@@ -1,3 +1,4 @@
 node_modules/
-app/stylesheets/main.css
 npm-debug.log
+app/lib/
+dist/

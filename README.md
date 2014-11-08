@@ -36,17 +36,36 @@ permite un desarrollo ágil de nuestros proyectos. Puedes ver que propiedades a�
 
 GULP:
 
-$ npm install --save-dev gulp
-$ npm install --save-dev gulp-connect
-$ npm install --save-dev connect-history-api-fallback
-$ npm install --save-dev gulp-jshint
-$ npm install --save-dev gulp-useref
-$ npm install --save-dev gulp-if
-$ npm install --save-dev gulp-uglify
-$ npm install --save-dev gulp-minify-css
-$ npm install --save-dev gulp-stylus
-$ npm install --save-dev nib
+- $ npm install --save-dev gulp
+- $ npm install --save-dev gulp-connect
+- $ npm install --save-dev connect-history-api-fallback
+- $ npm install --save-dev gulp-jshint
+- $ npm install --save-dev gulp-useref
+- $ npm install --save-dev gulp-if
+- $ npm install --save-dev gulp-uglify
+- $ npm install --save-dev gulp-minify-css
+- $ npm install --save-dev gulp-stylus
+- $ npm install --save-dev nib
 
 Con '--save' se guardan dependencias en el package.json, y con '-dev' indica el objeto donde guardarlas.
 
 Estas dependencias nos servirán para automatizar la correción de código de JavaScript, el minificado del css, la creación de un servidor web de desarrollo para poder ver los cambios que hagamos en el código en tiempo real en el navegador, etc.
+
+
+
+ANGULAR:
+
+Lo ideal es separar cada funcionalidad en modulos.
+
+- Las funcionalidades se colocan en app/scripts. Aquí también se colocan los servicios , controladores y directivas.
+
+- En app/lib están las librerias utilizadas por Bower.
+
+- En app/views están los HTMl para las vistas de la aplicacion.
+
+- angular-route nos permite hacer uso de la directiva $routeProvider para poder manejar URLs desde el navegador y mostrar una página u otra al usuario.
+
+- angular-resource por su parte, nos deja emplear la directiva $resource que nos permite manejar peticiones AJAX a recursos REST de una manera más sencilla y con una sintaxis más limpia, en
+lugar de usar las directivas $http.get o $http.post.
+
+- ng-app es la directiva que indica que es una aplicacion Angular. Se usa en index.html

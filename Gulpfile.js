@@ -55,9 +55,9 @@ gulp.task('html', function() {
 
 // Inyecta ficheros CSS y JS que hayamos creado en el index.html
 gulp.task('inject', function() {
-  var files = gulp.src(['.app/stylesheets/**/*.css'], ['.app/scripts/**/*.js']);
+  var files = gulp.src(['./app/stylesheets/**/*.css','./app/scripts/**/*.js']);
   return gulp.src('index.html', {cwd: './app'})
-  .pipe(inject(files, {read: false, ignorePath: './app'}))
+  .pipe(inject(files, {read: false, ignorePath: '/app'}))
   .pipe(gulp.dest('./app'));
 });
 

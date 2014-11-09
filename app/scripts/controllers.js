@@ -13,7 +13,7 @@
 
   // Controlador para obtener los detalles de un post
   // $routeParams nos da los parametros del navegador
-  function PostDetailCtrl($routeParams, Post, Comments) {
+  function PostDetailCtrl($routeParams, Post, Comment, User) {
     this.post = {};
     this.comments = {};
     this.user = {};
@@ -27,12 +27,12 @@
         function(data) {
           self.post = data;
           self.user = User.query({id: self.post.userId});
-        }
+        },
         function(error) {
           console.log(error);
         }
-      )
-    this.comments = Comment.query({id: $routeParam.postId});
+      );
+    this.comments = Comment.query({id: $routeParams.postId});
   }
 
   function PostCreateCtrl(Post) {
@@ -42,7 +42,7 @@
     };
   }
 
-  angular.module('blog-controllers')
+  angular.module('blog.controllers')
   .controller('PostListCtrl', PostListCtrl)
   .controller('PostDetailCtrl', PostDetailCtrl)
   .controller('PostCreateCtrl', PostCreateCtrl);
@@ -54,7 +54,7 @@
     .controller('PostListCtrl', PostListCtrl)
     .controller('PostDetailCtrl', PostDetailCtrl)
     .controller('PostCreateCtrl', PostCreateCtrl);
-    
+
 
   */
 

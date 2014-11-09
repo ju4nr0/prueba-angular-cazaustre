@@ -9,7 +9,7 @@
 (function() {
   'use strict';
 
-  anguler.module('blog.services', ['ngResource'])
+  angular.module('blog.services', ['ngResource']);
 
   function Post($resource, BaseUrl) {
     return $resource(BaseUrl + '/posts/:postId', {
@@ -18,7 +18,7 @@
   }
 
   function Comment($resource, BaseUrl) {
-    return $resource(BaseUrl + '/comments/:commentId' {
+    return $resource(BaseUrl + '/comments/:commentId', {
       commentId: '@_id'
     });
   }

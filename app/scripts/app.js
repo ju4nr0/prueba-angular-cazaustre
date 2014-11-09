@@ -6,10 +6,11 @@
 
 (function() {
   'use strict';
-  
+
   // cargar dependencia de angular. Se indica el nombre
   // de la aplicacion, y de la dependencia a usar.
   // En este caso es la de ngRoute de la libreria angular-route
+  //
   // Tambien se cargan los controladores
   angular.module('blog', ['ngRoute', 'blog.controllers']);
 
@@ -46,4 +47,4 @@
   // Asocia la funcion anterior a la aplicacion
   angular.module('blog').config(config);
 
-})()
+})();

@@ -61,8 +61,8 @@ gulp.task('inject', function() {
   .pipe(gulp.dest('./app'));
 });
 
-// Inyecta librerias instaladas con Bower
-gulp.task('bower', function() {
+// Inyecta las librerias que instalemos vía Bower
+gulp.task('bower', function () {
   gulp.src('./app/index.html')
   .pipe(wiredep({directory: './app/lib'}))
   .pipe(gulp.dest('./app'));
@@ -74,7 +74,7 @@ gulp.task('watch', function() {
   gulp.watch(['./app/**/*.html'], ['html']);
   gulp.watch(['./app/stylesheets/**/*.styl'], ['css', 'inject']);
   gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
-  gulp.watch(['./app/bower.json'], ['bower']);
+  gulp.watch(['./bower.json'], ['bower']);
 });
 
 // Tareas que se ejecutan al arrancar Gulp
